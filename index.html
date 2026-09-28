@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Build a CPU — 3D Build Lab</title>
+<link rel="stylesheet" href="css/style.css" />
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+  <canvas id="scene"></canvas>
+
+  <!-- top bar -->
+  <header id="topbar">
+    <div class="brand">
+      <span class="dot"></span>
+      <h1>Build&nbsp;Lab<span class="thin"> / assemble a computer</span></h1>
+    </div>
+    <div class="meta">
+      <div class="stage" id="stageLabel">Briefing</div>
+      <div class="score" id="scoreLabel">Score 0</div>
+    </div>
+  </header>
+
+  <!-- parts checklist -->
+  <aside id="tray">
+    <h2>Build order</h2>
+    <ol id="trayList"></ol>
+    <h2 class="periph-title">Peripherals</h2>
+    <ol id="periphList"></ol>
+  </aside>
+
+  <!-- question / action card -->
+  <section id="card" class="hidden">
+    <div id="cardTag">Question 1 / 10</div>
+    <p id="cardQuestion">…</p>
+    <div id="cardOptions"></div>
+    <div id="cardFeedback" class="feedback"></div>
+    <div id="cardActions"></div>
+  </section>
+
+  <!-- intro -->
+  <section id="intro">
+    <h2>Assemble a working computer</h2>
+    <p>
+      Answer one question per component. Get it right and the part flies into the
+      chassis in 3D. Fit all seven, plug in the monitor, keyboard and mouse,
+      hit the power button and install an OS.
+    </p>
+    <ul class="hints">
+      <li>Drag to orbit, scroll to zoom</li>
+      <li>A wrong answer costs a point, not the run</li>
+    </ul>
+    <button id="startBtn" class="primary">Start the build</button>
+  </section>
+
+  <!-- win banner -->
+  <section id="win" class="hidden">
+    <div class="win-badge">MISSION COMPLETED</div>
+    <p id="winText"></p>
+    <button id="againBtn" class="primary">Build another one</button>
+  </section>
+
+  <div id="toast"></div>
+
+  <div id="filewarn" class="hidden">
+    <h2>Run it from a local server</h2>
+    <p>Browsers block ES modules on <code>file://</code>. From this folder run:</p>
+    <pre>python3 -m http.server 8000</pre>
+    <p>then open <code>http://localhost:8000/</code></p>
+  </div>
+
+  <script>
+    if (location.protocol === 'file:') {
+      document.getElementById('filewarn').classList.remove('hidden');
+      document.getElementById('intro').classList.add('hidden');
+    }
+  </script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
