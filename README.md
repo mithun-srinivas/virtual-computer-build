@@ -26,12 +26,17 @@ from a CDN through the import map in `index.html`.
 3. **Power on** — click the glowing power button on the front bezel (or the on
    screen button). The fan spins up, the interior light strip comes on and the
    firmware in ROM runs POST.
-4. **No OS** — POST passes, no bootable image is found. Install an OS and it
-   partitions the SSD, copies a kernel, writes a bootloader, reboots and lands on
-   a desktop reading MISSION COMPLETED.
+4. **No OS** — POST passes, but both drives are empty, so there is nothing to
+   start. The installer then asks what the machine is mostly for, and that answer
+   picks the operating system: games and everyday apps gets Windows, photo, video
+   and music work gets macOS, coding and learning how a computer works gets Linux.
+5. **Installed** — the chosen system is written to the SSD, the machine restarts
+   and boots into that desktop, drawn in its own style, reading MISSION COMPLETED.
 
-Wrong answers cost a point and show a hint, never the run. Keys A–D answer the
-current question; drag to orbit, scroll to zoom.
+Wrong answers cost a point and show a hint, never the run. Keys A-D answer the
+current question; drag to orbit, scroll to zoom. The questions avoid jargon: the
+two storage parts are told apart by "discs that spin inside" against "nothing
+moving at all".
 
 ## Files
 
@@ -41,6 +46,6 @@ current question; drag to orbit, scroll to zoom.
 | `css/style.css` | Overlay styling |
 | `js/main.js` | Scene setup, game flow, camera moves, boot sequence |
 | `js/parts.js` | Every 3D object, built from primitives |
-| `js/quiz.js` | The ten questions, hints and explanations |
+| `js/quiz.js` | The ten questions, hints, explanations and the three operating systems |
 | `js/screen.js` | The monitor image, drawn to a canvas texture |
 | `js/anim.js` | Promise based tween loop |
